@@ -1,5 +1,5 @@
 const routes = {
-  home: "/",
+  home: "/thuc_tap_tn",
   nopage: "*", //danh cho nhung link ko cos thif no se di vao trang nay
   following: "/following",
   // profile: "/:nickname",
