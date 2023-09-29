@@ -25,15 +25,14 @@ function Profile() {
   const video = () => setisvideo(true);
   const lock = () => setisvideo(false);
 
-  const pathname = "/@thaiq9577";
-// console.log(document.location.pathname)
+  const pathname = `/${document.location.pathname.split("/")[2]}`; 
   useEffect(() => {
     const fetchApi = async () => {
       const resuilt = await profileservice.getaUser(pathname);
       setnickuser(resuilt);
     };
     fetchApi();
-  });
+  },[]);
   return (
     <div className={cx("wrapper")}>
       <div className={cx("profileAcount")}>

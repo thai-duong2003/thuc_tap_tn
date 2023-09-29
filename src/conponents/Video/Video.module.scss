@@ -16,16 +16,6 @@
     border-radius: 5px;
   }
 }
-.video::after {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: 2px solid red;
-  width: 100%;
-}
 .more-btn {
   position: absolute;
   top: 12px;

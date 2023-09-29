@@ -50,6 +50,12 @@ function Video({ data }) {
       }
     }
   }
+// volume
+if(config.ismute===false){ 
+  videoref.current.volume=config.volumValue===undefined?1:config.volumValue
+}
+
+
 
   return (
     <div className={cx("wrapper")} onLoadedData={videoScroll}>
@@ -58,7 +64,7 @@ function Video({ data }) {
         onMouseOver={() => setishover(true)}
         onMouseOut={() => setishover(false)}
       >
-        <Link to={"/videodetail"}>
+        <Link to={"videodetail"}>
           <video
             loop
             // autoPlay

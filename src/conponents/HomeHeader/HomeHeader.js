@@ -16,8 +16,7 @@ function HomeHeaderItem({ data, className }) {
   const datauser = data.user;
 
   const Accprevi = ({ children, name = false }) => (
-    <div>
-      {" "}
+    <div> 
       <Tippy
         interactive
         offset={name && [-65, 30]}
@@ -35,15 +34,12 @@ function HomeHeaderItem({ data, className }) {
         {children}
       </Tippy>
     </div>
-  );
-  const test =
-    " as uyugdq wdyvw wdghdh qwdyqtw qwdgyqgdb jhduyqu dqygdqd qdgtwy wtwq dgygd kjen fuye udyeg fehu wewygb wehwgywe whegdwyef hgweyw eewe wehgy";
-  return (
+  ); 
+    return (
     <div className={cx("wrapper", { [className]: className })}>
       <div className={cx("user")}>
         <Accprevi>
-          <Link to={`@${datauser.nickname}`}>
-            {" "}
+          <Link to={`@${datauser.nickname}`}> 
             <Image className={cx("avatar")} src={datauser.avatar}></Image>
           </Link>
         </Accprevi>
