@@ -1,0 +1,14 @@
+.wrapper {
+  width: var(--default-layout-sidebar-width);
+  padding: 20px 0 28px 8px;
+  position: fixed;
+  height: 560px;
+  overflow-y: auto;
+}
+.wrapper::-webkit-scrollbar {
+  width: 5px;
+  display: none;
+}
+.wrapper:hover::-webkit-scrollbar {
+  display: block;
+}
