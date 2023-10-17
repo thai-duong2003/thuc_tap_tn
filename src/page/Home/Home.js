@@ -6,14 +6,12 @@ import styles from "./Home.module.scss";
 const cx = classNames.bind(styles);
 
 function Home() {
-  const dc = "thai";
   return (
     <div className={cx("wrapper")}>
       <Contentmain />
-      <Link to={`/@${dc}`}>
+      <Link>
         <h1>home page</h1>
       </Link>
-      {dc}
     </div>
   );
 }

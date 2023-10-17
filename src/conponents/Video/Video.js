@@ -11,6 +11,7 @@ import Volume from "../Volume";
 // import { setconfig, config } from "../Volume/Volume";
 import { config } from "~/App";
 import { Link } from "react-router-dom";
+import { IPHTTP } from "~/utils/httprequest";
 const cx = classNames.bind(styles);
 
 function Video({ data }) {
@@ -50,12 +51,12 @@ function Video({ data }) {
       }
     }
   }
-// volume
-if(config.ismute===false){ 
-  videoref.current.volume=config.volumValue===undefined?1:config.volumValue
-}
-
-
+  // volume
+  if (config.ismute === false) {
+    if (config.volumValue === undefined) {
+      videoref.current.volume = 1;
+    }
+  }
 
   return (
     <div className={cx("wrapper")} onLoadedData={videoScroll}>
@@ -64,14 +65,14 @@ if(config.ismute===false){
         onMouseOver={() => setishover(true)}
         onMouseOut={() => setishover(false)}
       >
-        <Link to={"videodetail"}>
+        <Link to={`videos/${data.id}`}>
           <video
             loop
             // autoPlay
             ref={videoref}
             muted={config.ismute}
-            src={data.file_url}
-            poster={data.thumb_url}
+            src={IPHTTP + data.file_url}
+            // poster={data.thumb_url}
             playsInline
             onLoadedData={() => {
               window.addEventListener("scroll", videoScroll);

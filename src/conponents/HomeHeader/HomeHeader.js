@@ -9,14 +9,14 @@ import { useState } from "react";
 import Tippy from "@tippyjs/react/headless";
 import AccountPreview from "../SuggesteAcount/AcountPrevew/AcountPreview";
 import { Wrapper } from "../popper";
+import { IPHTTP } from "~/utils/httprequest";
 const cx = classNames.bind(styles);
 
 function HomeHeaderItem({ data, className }) {
   const [ismore, setismore] = useState(false);
   const datauser = data.user;
-
   const Accprevi = ({ children, name = false }) => (
-    <div> 
+    <div>
       <Tippy
         interactive
         offset={name && [-65, 30]}
@@ -34,13 +34,16 @@ function HomeHeaderItem({ data, className }) {
         {children}
       </Tippy>
     </div>
-  ); 
-    return (
+  );
+  return (
     <div className={cx("wrapper", { [className]: className })}>
       <div className={cx("user")}>
         <Accprevi>
-          <Link to={`@${datauser.nickname}`}> 
-            <Image className={cx("avatar")} src={datauser.avatar}></Image>
+          <Link to={`@${datauser.nickname}`}>
+            <Image
+              className={cx("avatar")}
+              src={IPHTTP + datauser.avatar}
+            ></Image>
           </Link>
         </Accprevi>
 
@@ -55,9 +58,7 @@ function HomeHeaderItem({ data, className }) {
                     icon={faCheckCircle}
                   />
                 )}
-                <span
-                  className={cx("fullname")}
-                >{`${datauser.first_name} ${datauser.last_name}`}</span>
+                <span className={cx("fullname")}>{datauser.name}</span>
               </p>
             </Link>
           </Accprevi>

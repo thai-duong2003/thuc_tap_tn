@@ -24,7 +24,7 @@ import { faAppStore } from "@fortawesome/free-brands-svg-icons";
 import Image from "~/conponents/Image";
 
 const cx = classNames.bind(styles);
-const currentUser = true;
+const currentUser = false;
 
 function Header() {
   //handle logic

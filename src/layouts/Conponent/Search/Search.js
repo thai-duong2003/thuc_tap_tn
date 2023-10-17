@@ -12,6 +12,7 @@ import {
 import Tippy from "@tippyjs/react/headless";
 import useDebounce from "~/hook/useDebounce";
 import * as searchServices from "~/Services/searchServices";
+import { nick } from "~/conponents/AccountItem/AccountItem";
 
 const cx = classNames.bind(styles);
 
@@ -34,8 +35,7 @@ function Search({ className }) {
       setloading(false);
     };
     fetchApi();
-  }, [debounce]);
-
+  }, [debounce]); 
   const handleChange = (e) => {
     const valuesearch = e.target.value;
     if (!valuesearch.startsWith(" ")) {
@@ -46,6 +46,10 @@ function Search({ className }) {
     setsearchvalue("");
     inputref.current.focus();
   };
+  const handleclickAcoount =(nick)=>{
+    setsearchvalue("")
+    setshowresult(false)
+  } 
   return (
     <Tippy
       interactive
@@ -55,7 +59,11 @@ function Search({ className }) {
           <PopperWrapper>
             <h4 className={cx("search-resuilt_title")}>Account</h4>
             {searchResult.map((item, index) => {
-              return <AccountItem key={index} data={item} />;
+              return (
+                <div onClick={handleclickAcoount} key={index}>
+                  <AccountItem  data={item} />
+                </div>
+              )
             })}
           </PopperWrapper>
         </div>

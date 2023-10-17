@@ -19,19 +19,19 @@ function Videobtnactive({ data, className, deletelastitem = false }) {
   const btnactive = [
     {
       icon: <FontAwesomeIcon icon={faHeart} />,
-      title: data.likes_count,
+      title: data.like_count,
     },
     {
       icon: <FontAwesomeIcon icon={faCommentDots} />,
-      title: data.comments_count,
+      title: data.comment_count,
     },
     {
       icon: <FontAwesomeIcon icon={faBookmark} />,
-      title: data.views_count,
+      title: data.favourite_count,
     },
     {
       icon: <FontAwesomeIcon icon={faShare} />,
-      title: data.shares_count,
+      title: data.share_count,
       children: true,
     },
   ];

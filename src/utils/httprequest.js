@@ -1,6 +1,7 @@
 import axios from "axios";
+export var IPHTTP = "http://192.168.102.230/";
 const httprequest = axios.create({
-  baseURL: "https://tiktok.fullstack.edu.vn/api/",
+  baseURL: `${IPHTTP}TIKTOK_API/public/api/`,
 });
 
 export const lay = async (apipath, options = {}) => {

@@ -16,16 +16,9 @@ function WriteComment() {
         <span>
           <Acongicon />
         </span>
-        <Tippy
-          interactive
-          placement="top"
-          hideOnClick={false}
-          render={(arrts) => <div tabIndex={"-1"} {...arrts}></div>}
-        >
-          <span>
-            <EmoineIcon />
-          </span>
-        </Tippy>
+        <span>
+          <EmoineIcon />
+        </span>
       </div>
       <button>Đăng</button>
     </div>

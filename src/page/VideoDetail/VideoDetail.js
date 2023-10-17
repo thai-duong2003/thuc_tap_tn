@@ -1,8 +1,8 @@
 import classNames from "classnames/bind";
+import HomeHeader from "~/conponents/HomeHeader";
 import { useEffect, useRef, useState } from "react";
 import images from "~/access/image";
 import Comments, { WriteComment } from "~/conponents/Comments";
-import HomeHeader from "~/conponents/HomeHeader";
 import Pretop from "~/conponents/Pretop";
 import Videobtnactive from "~/conponents/Videobtnactive";
 import Shareblock from "~/conponents/Videobtnactive/Shareblock";
@@ -19,40 +19,54 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { TippyOptionvideo } from "~/conponents/Video";
 import Search from "~/layouts/Conponent/Search/Search";
+import { getanvideo } from "~/Services/getanvideo";
+import { IPHTTP } from "~/utils/httprequest";
+import { Getcomment } from "~/Services/Commentlist";
 
 const cx = classNames.bind(styles);
-const datac = {
-  likes_count: 234,
-  comments_count: 234,
-  views_count: 234,
-  shares_count: 234,
-};
 
 function VideoDetail() {
-  const data = {
-    description:
-      "duong quang thai duong quang thai duong quang thai duong quang thai duong quang thai ",
-    vidoe: [images.video, images.video1, images.video2],
-    user: {
-      nickname: "thaiq",
-      avatar: images.noImg,
-      tick: true,
-      first_name: "duong quang",
-      last_name: "thai",
-    },
-  };
-
-  const [comment, setcomment] = useState(true);
+  const [commentLayout, setcommentLayout] = useState(true);
   const link =
     "https://images2.thanhnien.vn/Uploaded/nhuvnq/2021_12_09/ta03-7305.jpg";
 
   const re = useRef();
   const [tag, settag] = useState(undefined);
   const [index, setindex] = useState(0);
+  const [data, setdata] = useState("");
+  const [commentlist, setcommentlist] = useState("");
+
   const vi = () => {
     settag(re.current.querySelector("video"));
   };
-  console.log(index);
+
+  const pathname = document.location.pathname.slice(1);
+  // call get an video api
+
+  useEffect(() => {
+    const fetchApi = async () => {
+      const resuilt = await getanvideo(pathname);
+      setdata(resuilt);
+    };
+
+    fetchApi();
+  }, [pathname]);
+  // call Comment api
+  // console.log(data.id);
+
+  useEffect(() => {
+    if (data.id) {
+      const comnentapi = async () => {
+        const resuilt = await Getcomment(data.id);
+        setcommentlist(resuilt);
+      };
+      comnentapi();
+    }
+  }, [data.id]);
+
+  const backbroser = () => {
+    window.history.back();
+  };
   return (
     <div className={cx("wrapper")}>
       <div ref={re} className={cx("videopast")} onMouseOver={vi}>
@@ -63,13 +77,14 @@ function VideoDetail() {
         <div className={cx("overlay")}></div>
 
         <VideoTag
+          // muted
           className={"detailvideo"}
-          src={data.vidoe[index]}
+          src={IPHTTP + data.file_url}
           onlodedplay
         ></VideoTag>
         {/*  */}
         <div className={cx("wrappercontrol")}>
-          <div className={cx("close", "btn")}>
+          <div className={cx("close", "btn")} onClick={backbroser}>
             <FontAwesomeIcon icon={faXmark} />
           </div>
           <Search className={"videocontrol"} />
@@ -104,11 +119,11 @@ function VideoDetail() {
         </div>
       </div>
       <div className={cx("contentpast")}>
-        <HomeHeader className={"videodetail"} data={data} />
+        {data.user && <HomeHeader className={"videodetail"} data={data} />}
         <div className={cx("btnactive")}>
           <Videobtnactive
             deletelastitem
-            data={datac}
+            data={data}
             className={"videodetailBtnactive"}
           />
           <div className={cx("shareApp")}>
@@ -116,33 +131,33 @@ function VideoDetail() {
           </div>
         </div>
         <div className={cx("linkVideo")}>
-          <p>{data.description}</p>
+          <p>{IPHTTP + data.file_url}</p>
           <button>Coppy link</button>
         </div>
         <div className={cx("nameblock")}>
           <div
-            onClick={() => setcomment(true)}
-            style={{ fontWeight: comment ? "bold" : "initial" }}
+            onClick={() => setcommentLayout(true)}
+            style={{ fontWeight: commentLayout ? "bold" : "initial" }}
           >
             <p>
-              Comments (<span> 1013 </span>)
+              Comments (<span> {commentlist.length} </span>)
             </p>
           </div>
           <div
-            onClick={() => setcomment(false)}
-            style={{ fontWeight: comment ? "initial" : "bold" }}
+            onClick={() => setcommentLayout(false)}
+            style={{ fontWeight: commentLayout ? "initial" : "bold" }}
           >
             <p>Creator Videos</p>
           </div>
           <p
             style={{
-              transform: comment ? "" : "translateX(100%)",
+              transform: commentLayout ? "" : "translateX(100%)",
             }}
             className={cx("line")}
           ></p>
         </div>
         <div className={cx("commentlock")}>
-          <Comments />
+          <Comments data={commentlist} />
           <WriteComment />
         </div>
       </div>

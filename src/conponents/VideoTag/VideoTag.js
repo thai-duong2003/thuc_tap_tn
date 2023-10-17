@@ -53,8 +53,8 @@ function VideoTag({
       }}
     >
       <video
-        // muted={muted && true}
-        muted
+        muted={muted === true ? false : true}
+        // muted
         ref={videref}
         src={src}
         loop

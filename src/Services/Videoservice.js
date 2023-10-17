@@ -1,9 +1,9 @@
 import { lay } from "~/utils/httprequest";
 
-export const Video = async ({ type, page }) => {
+export const Video = async ({ page }) => {
   try {
     const res = await lay("videos", {
-      params: { type, page },
+      params: {  page },
     });
     return res.data;
   } catch (err) {}

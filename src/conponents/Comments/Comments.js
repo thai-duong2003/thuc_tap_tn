@@ -6,14 +6,14 @@ import Pretop from "../Pretop";
 import CommentsItems from "./CommentsItem";
 import styles from "./CommentsItems.module.scss";
 const cx = classNames.bind(styles);
-function Comments() {
+function Comments({ data }) {
   const [clickview, setclickview] = useState(false);
   const click = () => {
     setclickview(true);
   };
   return (
     <div className={cx("commentblock")}>
-      <CommentsItems />
+      {/* <CommentsItems />
       {clickview && (
         <div className={cx("repcomment")}>
           <CommentsItems className={"repitem"} />
@@ -25,7 +25,10 @@ function Comments() {
           <span>{`View ${5} reply`}</span>
           <FontAwesomeIcon icon={faAngleDown} />
         </button>
-      )}
+      )} */}
+
+      {data.length > 0 &&
+        data.map((item, index) => <CommentsItems key={index} data={item} />)}
     </div>
   );
 }

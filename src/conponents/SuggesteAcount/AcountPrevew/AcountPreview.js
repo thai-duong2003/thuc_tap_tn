@@ -4,6 +4,7 @@ import Image from "~/conponents/Image";
 import Button from "~/conponents/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+import { IPHTTP } from "~/utils/httprequest";
 
 const cx = classNames.bind(styles);
 
@@ -11,7 +12,7 @@ function AccountPreview({ data, bodyshow = false }) {
   return (
     <div className={cx("wrapper", { bodyshow })}>
       <div className={cx("header")}>
-        <Image className={cx("avata")} src={data.avatar} alt="" />
+        <Image className={cx("avata")} src={IPHTTP+data.avatar} alt="" />
         <div>
           {" "}
           <Button
@@ -30,11 +31,11 @@ function AccountPreview({ data, bodyshow = false }) {
             <FontAwesomeIcon className={cx("check")} icon={faCheckCircle} />
           )}
         </p>
-        <p className={cx("name")}>{data.first_name + " " + data.last_name}</p>
+        <p className={cx("name")}>{data.name}</p>
         <p className={cx("anakytics")}>
-          <strong className={cx("value")}>{data.followers_count}</strong>
+          <strong className={cx("value")}>{data.follower_counts}</strong>
           <span className={cx("lable")}>Followers</span>
-          <strong className={cx("value")}>{data.likes_count}</strong>
+          <strong className={cx("value")}>{data.like_counts}</strong>
           <span className={cx("lable")}>Likes</span>
         </p>
         {bodyshow && <p className={cx("slogan")}>{data.bio}</p>}
