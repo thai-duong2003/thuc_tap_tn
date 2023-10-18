@@ -6,5 +6,6 @@ const routes = {
   live: "/live",
   khampha: "/explore",
   videodetail: "/videos/:id",
+  login: "/login",
 };
 export default routes;

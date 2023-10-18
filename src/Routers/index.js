@@ -7,6 +7,7 @@ import Explore from "~/page/Exploer/Exploer";
 import Profile from "~/page/Profile/Profile";
 import VideoDetail from "~/page/VideoDetail/VideoDetail";
 import NoPage from "~/page/noPage/Nopage";
+import LoginRegister from "~/page/LoginRegister/LoginRegister";
 
 //public
 

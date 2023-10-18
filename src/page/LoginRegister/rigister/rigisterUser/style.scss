@@ -1,0 +1,84 @@
+.rigisterUser {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .rigisterUser_Main {
+        width: 483px;
+        height: 565px;
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        position: relative;
+
+        .rigisterUser_Main-delete {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            height: 6%;
+            align-items: center;
+
+            span {
+                background-color: rgb(242, 237, 237);
+                border-radius: 50%;
+                width: 35px;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                margin: 0;
+            }
+        }
+
+        .rigisterUser_Main-title {
+            width: 100%;
+            height: 10%;
+
+            h2 {
+                margin: 0;
+            }
+
+            .isFormValid {
+                color: red;
+            }
+
+            .isFormSuccess {
+                color: rgb(12, 192, 48);
+            }
+
+        }
+
+        form {
+            width: 483px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+    }
+
+    .rigisterUser_Main-submit {
+        width: 100%;
+        position: absolute;
+        bottom: 50px;
+        left: 0;
+    }
+
+}
+
+.rigisterUserNone {
+    display: none;
+}
