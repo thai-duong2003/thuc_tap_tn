@@ -1,68 +1,51 @@
 .logInUser {
-    position: fixed;
-    background-color: rgba(0, 0, 0, 0.2);
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: 2;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .logInUser_wrapper {
+    width: 483px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    gap: 15px;
+    position: relative;
 
-    .logInUser_wrapper {
-        width: 483px;
-        height: 350px;
-        background-color: white;
-        padding: 20px;
-        border-radius: 10px;
+    .logInUser_wrapper-head {
+      height: 10%;
+
+      span {
+        background-color: rgb(242, 237, 237);
+        border-radius: 80%;
+        width: 35px;
+        height: 35px;
         display: flex;
-        flex-direction: column;
+        justify-content: center;
         align-items: center;
-        gap: 15px;
-        position: relative;
-
-        .logInUser_wrapper-head {
-            width: 100%;
-            display: flex;
-            justify-content: flex-end;
-            height: 10%;
-            align-items: center;
-
-            span {
-                background-color: rgb(242, 237, 237);
-                border-radius: 80%;
-                width: 35px;
-                height: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                cursor: pointer;
-                margin: 0;
-            }
-        }
-
-        .logInUser_wrapper-body {
-            width: 100%;
-            height: auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            gap: 20px;
-
-            form {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-direction: column;
-                gap: 15px;
-            }
-        }
+        cursor: pointer;
+        margin: 0;
+      }
     }
 
+    .logInUser_wrapper-body {
+      flex: 1;
+
+      form {
+        margin: 22px 0;
+      }
+    }
+  }
 }
 
 .logInUserNone {
-    display: none;
+  display: none;
 }

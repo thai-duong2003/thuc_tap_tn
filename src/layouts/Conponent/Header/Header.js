@@ -22,15 +22,21 @@ import Menu from "~/conponents/Menu";
 import { InboxIcon, MessagesIcon, UploadIcon } from "~/conponents/Icon/Icon";
 import { faAppStore } from "@fortawesome/free-brands-svg-icons";
 import Image from "~/conponents/Image";
+import LoginRegister from "~/page/LoginRegister/LoginRegister";
+import { useState } from "react";
 
 const cx = classNames.bind(styles);
-const currentUser = false;
+export var AcountLogin;
+export var currentUser = false;
 
 function Header() {
   //handle logic
-  const handlemenuchange = (menuitem) => {
-    // console.log(menuitem);
+
+  const [clickloginbtn, setclickloginbtn] = useState(false);
+  const handlelogin = () => {
+    setclickloginbtn(true);
   };
+
   const MENU_ITEMS = [
     {
       icon: <FontAwesomeIcon icon={faAppStore} />,
@@ -117,7 +123,9 @@ function Header() {
               <Button text lefticon={<FontAwesomeIcon icon={faPlus} />}>
                 Upload
               </Button>
-              <Button primary>Log in</Button>
+              <Button primary onClick={handlelogin}>
+                Log in
+              </Button>
             </>
           )}
           <Menu items={currentUser ? usermenu : MENU_ITEMS}>
@@ -130,6 +138,16 @@ function Header() {
             )}
           </Menu>
         </div>
+        {clickloginbtn && (
+          <div
+            className={cx("loginform")}
+            onClick={() => {
+              setclickloginbtn(false);
+            }}
+          >
+            <LoginRegister />
+          </div>
+        )}
       </div>
     </div>
   );

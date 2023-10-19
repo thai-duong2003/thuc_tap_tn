@@ -1,35 +1,24 @@
 import "./style.scss";
-import { useState } from "react"
+import { useState } from "react";
 import LogInItem from "./LogInItem";
-function LogIn({onshow}) { 
-  const [userShow, setUserShow] = useState(false)
+function LogIn({ onshow }) {
+  const [userShow, setUserShow] = useState(false);
   const handlShowUser = () => {
     if (userShow) {
-      setUserShow(false)
+      setUserShow(false);
     } else {
-      setUserShow(true)
+      setUserShow(true);
     }
-  }
+  };
   return (
     <div>
-      <div className={!userShow ? "rigisters":"showNone"}>
+      <div className={!userShow ? "rigisters" : "showNone"}>
         <div className="rigister-main">
-          <div className="rigister-main-delete">
-            <div className="rigister-main-delete-icon"> 
-              <i class="fa-solid fa-x"></i>
-            </div>
-          </div>
           <div className="rigister_title">
-            <h2>
-              Log in to TikTok
-            </h2>
+            <h2>Log in to TikTok</h2>
           </div>
           <div className="rigisters_body">
             <div className="rigisblock">
-            <svg width="1.2em" data-e2e="" height="1.2em" viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M8 6C6.89543 6 6 6.89543 6 8V21C6 22.1046 6.89543 23 8 23H21C22.1046 23 23 22.1046 23 21V8C23 6.89543 22.1046 6 21 6H8ZM10 19V10H19V19H10ZM28 6C26.8954 6 26 6.89543 26 8V21C26 22.1046 26.8954 23 28 23H41C42.1046 23 43 22.1046 43 21V8C43 6.89543 42.1046 6 41 6H28ZM30 19V10H39V19H30ZM8 26C6.89543 26 6 26.8954 6 28V41C6 42.1046 6.89543 43 8 43H21C22.1046 43 23 42.1046 23 41V28C23 26.8954 22.1046 26 21 26H8ZM10 39V30H19V39H10ZM26 42C26 42.5523 26.4477 43 27 43H29C29.5523 43 30 42.5523 30 42V27C30 26.4477 29.5523 26 29 26H27C26.4477 26 26 26.4477 26 27V42ZM32.5 42C32.5 42.5523 32.9477 43 33.5 43H35.5C36.0523 43 36.5 42.5523 36.5 42V27C36.5 26.4477 36.0523 26 35.5 26H33.5C32.9477 26 32.5 26.4477 32.5 27V42ZM40 43C39.4477 43 39 42.5523 39 42V27C39 26.4477 39.4477 26 40 26H42C42.5523 26 43 26.4477 43 27V42C43 42.5523 42.5523 43 42 43H40Z"></path></svg>
-              <p>Use QR code</p>
-            </div>
-            <div className="rigisblock rigisters_body-user" onClick={handlShowUser}>
               <svg
                 width="1.2em"
                 data-e2e=""
@@ -39,8 +28,28 @@ function LogIn({onshow}) {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M8 6C6.89543 6 6 6.89543 6 8V21C6 22.1046 6.89543 23 8 23H21C22.1046 23 23 22.1046 23 21V8C23 6.89543 22.1046 6 21 6H8ZM10 19V10H19V19H10ZM28 6C26.8954 6 26 6.89543 26 8V21C26 22.1046 26.8954 23 28 23H41C42.1046 23 43 22.1046 43 21V8C43 6.89543 42.1046 6 41 6H28ZM30 19V10H39V19H30ZM8 26C6.89543 26 6 26.8954 6 28V41C6 42.1046 6.89543 43 8 43H21C22.1046 43 23 42.1046 23 41V28C23 26.8954 22.1046 26 21 26H8ZM10 39V30H19V39H10ZM26 42C26 42.5523 26.4477 43 27 43H29C29.5523 43 30 42.5523 30 42V27C30 26.4477 29.5523 26 29 26H27C26.4477 26 26 26.4477 26 27V42ZM32.5 42C32.5 42.5523 32.9477 43 33.5 43H35.5C36.0523 43 36.5 42.5523 36.5 42V27C36.5 26.4477 36.0523 26 35.5 26H33.5C32.9477 26 32.5 26.4477 32.5 27V42ZM40 43C39.4477 43 39 42.5523 39 42V27C39 26.4477 39.4477 26 40 26H42C42.5523 26 43 26.4477 43 27V42C43 42.5523 42.5523 43 42 43H40Z"
+                ></path>
+              </svg>
+              <p>Use QR code</p>
+            </div>
+            <div
+              className="rigisblock rigisters_body-user"
+              onClick={handlShowUser}
+            >
+              <svg
+                width="1.2em"
+                data-e2e=""
+                height="1.2em"
+                viewBox="0 0 48 48"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M24.0003 7C20.1343 7 17.0003 10.134 17.0003 14C17.0003 17.866 20.1343 21 24.0003 21C27.8663 21 31.0003 17.866 31.0003 14C31.0003 10.134 27.8663 7 24.0003 7ZM13.0003 14C13.0003 7.92487 17.9252 3 24.0003 3C30.0755 3 35.0003 7.92487 35.0003 14C35.0003 20.0751 30.0755 25 24.0003 25C17.9252 25 13.0003 20.0751 13.0003 14ZM24.0003 33C18.0615 33 13.0493 36.9841 11.4972 42.4262C11.3457 42.9573 10.8217 43.3088 10.2804 43.1989L8.32038 42.8011C7.77914 42.6912 7.4266 42.1618 7.5683 41.628C9.49821 34.358 16.1215 29 24.0003 29C31.8792 29 38.5025 34.358 40.4324 41.628C40.5741 42.1618 40.2215 42.6912 39.6803 42.8011L37.7203 43.1989C37.179 43.3088 36.6549 42.9573 36.5035 42.4262C34.9514 36.9841 29.9391 33 24.0003 33Z"
                 ></path>
               </svg>
@@ -64,9 +73,7 @@ function LogIn({onshow}) {
                   fill="#0075FA"
                 ></path>
               </svg>
-              <p>
-                Continue with Facebook
-              </p>
+              <p>Continue with Facebook</p>
             </div>
             <div className="rigisblock rigisters_body-google">
               <svg
@@ -78,26 +85,26 @@ function LogIn({onshow}) {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M43 24.4313C43 23.084 42.8767 21.7885 42.6475 20.5449H24.3877V27.8945H34.8219C34.3724 30.2695 33.0065 32.2818 30.9532 33.6291V38.3964H37.2189C40.885 35.0886 43 30.2177 43 24.4313Z"
                   fill="#4285F4"
                 ></path>
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M24.3872 43.001C29.6219 43.001 34.0107 41.2996 37.2184 38.3978L30.9527 33.6305C29.2165 34.7705 26.9958 35.4441 24.3872 35.4441C19.3375 35.4441 15.0633 32.1018 13.5388 27.6108H7.06152V32.5337C10.2517 38.7433 16.8082 43.001 24.3872 43.001Z"
                   fill="#34A853"
                 ></path>
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M13.5395 27.6094C13.1516 26.4695 12.9313 25.2517 12.9313 23.9994C12.9313 22.7472 13.1516 21.5295 13.5395 20.3894V15.4668H7.06217C5.74911 18.0318 5 20.9336 5 23.9994C5 27.0654 5.74911 29.9673 7.06217 32.5323L13.5395 27.6094Z"
                   fill="#FBBC04"
                 ></path>
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M24.3872 12.5568C27.2336 12.5568 29.7894 13.5155 31.7987 15.3982L37.3595 9.94866C34.0018 6.88281 29.6131 5 24.3872 5C16.8082 5 10.2517 9.25777 7.06152 15.4674L13.5388 20.39C15.0633 15.8991 19.3375 12.5568 24.3872 12.5568Z"
                   fill="#EA4335"
                 ></path>
@@ -114,15 +121,13 @@ function LogIn({onshow}) {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M43.8044 6.79902C42.5841 7.62363 39.7822 8.82191 38.4004 8.82191V8.82437C36.8226 7.08554 34.6013 6 32.1377 6C27.353 6 23.4731 10.093 23.4731 15.1387C23.4731 15.8398 23.5501 16.5236 23.6925 17.1793H23.6911C17.2007 16.9996 10.1022 13.5678 5.82893 7.69403C3.2016 12.4916 5.4752 17.8272 8.45673 19.7713C7.43613 19.8526 5.55733 19.6473 4.673 18.737C4.61373 21.9212 6.06507 26.1403 11.3571 27.6709C10.3379 28.2494 8.53373 28.0834 7.74926 27.9604C8.0246 30.6484 11.5927 34.1625 15.4945 34.1625C14.1039 35.8594 8.8716 38.9374 3 37.9582C6.98767 40.5177 11.6352 42 16.5543 42C30.5333 42 41.3894 30.0482 40.8051 15.3041C40.8028 15.2879 40.8028 15.2716 40.8014 15.2539C40.8028 15.216 40.8051 15.1781 40.8051 15.1387C40.8051 15.0929 40.8014 15.0496 40.8 15.0053C42.0726 14.0871 43.7801 12.463 45 10.3254C44.2925 10.7365 42.1701 11.5596 40.1952 11.7639C41.4627 11.0422 43.3405 8.67865 43.8044 6.79902Z"
                   fill="#1DA1F2"
                 ></path>
               </svg>
-              <p>
-                Continue with Twitter
-              </p>
+              <p>Continue with Twitter</p>
             </div>
             <div className="rigisblock rigisters_body-line">
               <svg
@@ -134,8 +139,8 @@ function LogIn({onshow}) {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M24 47.001C36.7026 47.001 47 36.7035 47 24.001C47 11.2984 36.7026 1.00098 24 1.00098C11.2975 1.00098 1 11.2984 1 24.001C1 36.7035 11.2975 47.001 24 47.001Z"
                   fill="#00B900"
                 ></path>
@@ -162,29 +167,28 @@ function LogIn({onshow}) {
               </svg>
               <p>Continue with LINE</p>
             </div>
-           
           </div>
           <div className="rigisters_node">
-            <p>By continuing, you agree to TikTok’s
-              <a href="https://www.tiktok.com/legal/terms-of-use?lang=en"> Terms of Service </a>
+            <p>
+              By continuing, you agree to TikTok’s
+              <a href="https://www.tiktok.com/legal/terms-of-use?lang=en">
+                {" "}
+                Terms of Service{" "}
+              </a>
               and confirm that you have read TikTok’s
-              <a href="https://www.tiktok.com/legal/privacy-policy?lang=en">Privacy Policy </a>
+              <a href="https://www.tiktok.com/legal/privacy-policy?lang=en">
+                Privacy Policy{" "}
+              </a>
             </p>
           </div>
           <div className="rigisters_footer">
-            <div>
-              Don't have an account?
-            </div>
+            <div>Don't have an account?</div>
             <span onClick={onshow}>Sign up</span>
           </div>
         </div>
       </div>
-      <LogInItem 
-      userShow={userShow}
-      onUserShow={handlShowUser}
-      />
-     
+      <LogInItem userShow={userShow} onUserShow={handlShowUser} />
     </div>
-  )
+  );
 }
 export default LogIn;

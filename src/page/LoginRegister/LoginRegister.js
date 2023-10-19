@@ -10,9 +10,12 @@ function LoginRegister() {
       setShow(true);
     }
   };
-  console.log("====", show);
   return (
-    <div>
+    <div
+      onClick={(e) => {
+        e.stopPropagation();
+      }}
+    >
       {show ? <Rigister onShow={handleShow} /> : <LogIn onshow={handleShow} />}
     </div>
   );
