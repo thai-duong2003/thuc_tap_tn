@@ -8,6 +8,8 @@ import { text } from "@fortawesome/fontawesome-svg-core";
 import VideoTag from "~/conponents/VideoTag";
 import Button from "~/conponents/Button";
 import { AcountLogin } from "../LoginRegister/logIn/LogInItem";
+import { IPHTTP } from "~/utils/httprequest";
+import { useRef, useState } from "react";
 const cx = classNames.bind(styles);
 function Upload() {
   const Data = {
@@ -16,13 +18,24 @@ function Upload() {
     favourite_count: 12,
     share_count: 12,
   };
+  const [ifofile, setifofile] = useState("");
+
+  const as = (e) => {
+    setifofile(e.target.files[0]);
+  };
+  // console.log(inpuref.curre/nt.files[0]);
+  console.log(ifofile.name);
   return (
-    <div className={cx("Upload")}>
-      <form method="post" action="">
+    <form
+      method="POST"
+      action={`${IPHTTP}TIKTOK_API/public/api/videos/create`}
+      encType="multipart/form-data"
+    >
+      <div className={cx("Upload")}>
         <div className={cx("wrapper")}>
           <div className={cx("title")}>
             <h1>Tải video lên</h1>
-            <p>Đăng video vào tài khoản của bạn</p>
+            <span>Đăng video vào tài khoản của bạn</span>
           </div>
 
           <div className={cx("content")}>
@@ -33,10 +46,13 @@ function Upload() {
               >
                 <div className={cx("video")}>
                   {" "}
-                  <VideoTag muted src={images.video2} />
+                  <VideoTag
+                    muted
+                    src={ifofile && window.URL.createObjectURL(ifofile)}
+                  />
                 </div>
                 <div className={cx("avartar")}>
-                  <Image src={images.noImg} />
+                  <Image src={AcountLogin && IPHTTP + AcountLogin.avatar} />
                 </div>
                 <div className={cx("Activevideo")}>
                   <Videobtnactive data={Data} />
@@ -47,21 +63,33 @@ function Upload() {
               </div>
               <Wrapper>
                 <div className={cx("selectvideo")}>
-                  <p className={cx("Namefile")}>download4.mp4</p>
-                  <input type="file" />
+                  <p className={cx("Namefile")}>{ifofile && ifofile.name}</p>
+                  <input type="file" name="file_url" onChange={as} />
                 </div>
               </Wrapper>
             </div>
             <div className={cx("Description")}>
               <div className={cx("Mota")}>
                 <p className={cx("Title")}>
-                  <p>Chú thích</p>
-                  <p>
+                  <span className={cx("dau")}>Chú thích</span>
+                  <span>
                     <span>0</span>/<span>200</span>
-                  </p>
+                  </span>
                 </p>
                 <div className={cx("nhap")}>
-                  <input type={text} placeholder="Mô tả video" />
+                  <input
+                    type="text"
+                    name="description"
+                    placeholder="Mô tả video"
+                  />
+                </div>
+                <div className={cx("nhap")}>
+                  <input
+                    type="text"
+                    name="music"
+                    placeholder="Tên bài hát"
+                    defaultValue={`nhạc nền - ${AcountLogin.name}`}
+                  />
                 </div>
               </div>
               <div className={cx("Chedo")}>
@@ -75,15 +103,27 @@ function Upload() {
               <div className={cx("Chophep")}>
                 <p className={cx("dau")}> Cho phép người dùng:</p>
                 <span>
-                  <input type="checkbox" className={cx("checkbox")}></input>
+                  <input
+                    type="checkbox"
+                    defaultChecked
+                    className={cx("checkbox")}
+                  ></input>
                   <span> Bình luận</span>
                 </span>
                 <span>
-                  <input type="checkbox" className={cx("checkbox")}></input>
+                  <input
+                    type="checkbox"
+                    defaultChecked
+                    className={cx("checkbox")}
+                  ></input>
                   <span>Duet</span>
                 </span>
                 <span>
-                  <input type="checkbox" className={cx("checkbox")}></input>
+                  <input
+                    type="checkbox"
+                    defaultChecked
+                    className={cx("checkbox")}
+                  ></input>
                   <span>Ghép nối</span>
                 </span>
               </div>
@@ -110,18 +150,20 @@ function Upload() {
               </p>
               <div className={cx("dang")}>
                 <Button to={"/"}>Hủy bỏ</Button>
-                <input className={cx("submit")} type="submit" value={"Đăng"} />
+                <input className={cx("submit")} type="submit" value="Đăng" />
               </div>
               <input
                 className={cx("us")}
-                type={text}
+                type={"hidden"}
+                readOnly
+                name="user_id"
                 value={AcountLogin && AcountLogin.id}
               ></input>
             </div>
           </div>
         </div>
-      </form>
-    </div>
+      </div>
+    </form>
   );
 }
 export default Upload;

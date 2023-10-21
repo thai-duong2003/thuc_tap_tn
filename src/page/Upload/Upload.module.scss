@@ -7,7 +7,7 @@
     font-size: 25px;
     line-height: 30px;
   }
-  p {
+  span {
     font-size: 17px;
     font-weight: bold;
     color: rgba(22, 24, 35, 0.5);
@@ -19,6 +19,7 @@
   background-size: contain;
   background-repeat: no-repeat;
   position: relative;
+  margin-bottom: 32px;
 }
 .video {
   position: absolute;
@@ -112,7 +113,9 @@
     border: 1px solid;
   }
 }
-
+.nhap :last-child {
+  margin-top: 10px;
+}
 .Chedo {
   margin-top: 20px;
   select {
@@ -129,7 +132,7 @@
   margin: 15px 0;
 }
 .Upload {
-  height: 745px;
+  height: 800px;
   box-shadow: 0px 0 7px #999090;
   margin-top: 10px;
   margin-bottom: 30px;
@@ -168,7 +171,7 @@ p.cuoi {
 }
 .dang {
   text-align: center;
-  margin-top: 88px;
+  margin-top: 60px;
   a {
     border: 1px solid;
     height: 40px;

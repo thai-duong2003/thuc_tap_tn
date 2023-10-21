@@ -6,6 +6,7 @@ import { CheckEmail } from "../../assets/emailCheck";
 import React, { memo, useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
+import { IPHTTP } from "~/utils/httprequest";
 
 function RigisterUser({ userShow, onUserShow }) {
   const [userName, setUserName] = useState("");
@@ -119,7 +120,7 @@ function RigisterUser({ userShow, onUserShow }) {
         </div>
         <form
           method="post"
-          action="http://localhost/TIKTOK_API/public/api/users/register "
+          action={`${IPHTTP}TIKTOK_API/public/api/users/register`}
           encType="multipart/form-data"
         >
           <Input
@@ -159,7 +160,7 @@ function RigisterUser({ userShow, onUserShow }) {
             isEmtyNickName={isEmtyNickName ? "Vui lòng nhập nickName" : ""}
             name="nickname"
           />
-          <Input type="file" label="Avatar: " name={"file_url"} />
+          <Input type="file" label="Avatar: " name={"avatar"} />
           <div className="rigisterUser_Main-submit">
             <Button name="Submit" onClick={handleSubmit} />
           </div>

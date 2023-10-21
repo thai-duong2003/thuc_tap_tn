@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { loginsucccess } from "~/layouts/Conponent/Header/Header";
+import { IPHTTP } from "~/utils/httprequest";
 export var AcountLogin;
 export default function LogInItem({ onUserShow, userShow }) {
   const isloginsucccess = useContext(loginsucccess);
@@ -50,7 +51,7 @@ export default function LogInItem({ onUserShow, userShow }) {
     const b = async () => {
       try {
         const resuilt = await axios.post(
-          `http://192.168.102.230/TIKTOK_API/public/api/users/login?email=${email}&password=${password}`
+          `${IPHTTP}/TIKTOK_API/public/api/users/login?email=${email}&password=${password}`
         );
         setpost(resuilt.data);
       } catch (err) {
