@@ -118,9 +118,11 @@ function Header() {
                   placement="bottom"
                   delay={[0, 200]}
                 >
-                  <button className={cx("action-btn")}>
-                    <UploadIcon />
-                  </button>
+                  <Link to={"/upload"}>
+                    <button className={cx("action-btn")}>
+                      <UploadIcon />
+                    </button>
+                  </Link>
                 </Tippy>
                 <Tippy content="Messages" placement="bottom" delay={[0, 200]}>
                   <button className={cx("action-btn")}>
@@ -136,7 +138,11 @@ function Header() {
             ) : (
               <>
                 {" "}
-                <Button text lefticon={<FontAwesomeIcon icon={faPlus} />}>
+                <Button
+                  onClick={handlelogin}
+                  text
+                  lefticon={<FontAwesomeIcon icon={faPlus} />}
+                >
                   Upload
                 </Button>
                 <Button primary onClick={handlelogin}>
