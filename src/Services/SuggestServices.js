@@ -2,10 +2,10 @@
 import { lay } from "~/utils/httprequest";
 export const Suggest = async ({ page, perpage }) => {
   try {
-    const res = await lay("users/suggested", {
-      params: { page, per_page: perpage },
+    const res = await lay("suggess/users", {
+      params: { page },
     });
-    return res.data;
+    return res;
   } catch (err) {
     console.log(err);
   }

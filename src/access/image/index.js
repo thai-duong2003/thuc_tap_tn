@@ -1,8 +1,8 @@
 const images = {
   logo: require("~/access/image/logo.svg").default,
   noImg: require("~/access/image/no_img.jpg"),
-  video: require("~/access/image/Download .mp4"),
-  video1: require("~/access/image/Download1.mp4"),
+  phone: require("~/access/image/phone.png"),
   video2: require("~/access/image/Download2.mp4"),
+  controlphone: require("~/access/image/Screenshot_8.png"),
 };
 export default images;

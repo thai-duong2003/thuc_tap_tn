@@ -1,6 +1,6 @@
 import Tippy from "@tippyjs/react/headless";
 import classNames from "classnames/bind";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Wrapper } from "../popper";
 import HeaderMenu from "./Headermenu";
 import styles from "./Menu.module.scss";
@@ -20,6 +20,11 @@ function Menu({
 }) {
   const [history, sethistory] = useState([{ data: items }]);
   const curren = history[history.length - 1];
+
+  useEffect(() => {
+    sethistory([{ data: items }]);
+  }, [items]);
+
   const renderitems = () => {
     return curren.data.map((item, index) => {
       const isparent = !!item.children;
@@ -42,7 +47,6 @@ function Menu({
   };
   const map = isright ? "right" : "bottom-end";
   const placement = [X, Y];
-
   return (
     <Tippy
       interactive

@@ -140,7 +140,7 @@ function Profile() {
                     return (
                       <Link
                         key={index}
-                        to="/videodetail"
+                        to={`/videos/${item.id}`}
                         className={cx("video-item")}
                       >
                         <VideoTag
@@ -148,7 +148,6 @@ function Profile() {
                           src={IPHTTP + item.file_url}
                           mouseOutAutoPause
                           mouseOverAutoPlay
-                          muted
                         >
                           <span className={cx("watched")}>
                             <PlaypathIcon />

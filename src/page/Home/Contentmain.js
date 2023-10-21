@@ -17,7 +17,7 @@ function Contentmain() {
       const resuilt = await userServices.Video({ page: page });
       setvideo(resuilt);
     };
-    // fetchApi();
+    fetchApi();
   }, [page]);
   window.onscroll = () => {
     if (contairef.current) {

@@ -9,11 +9,10 @@ const Image = forwardRef(({ src, alt, clas, ...props }, ref) => {
 
   const handleError = () => {
     setloi(images.noImg);
-  }; 
- 
+  };
   return (
     <img
-      src={loi||src}
+      src={loi || src}
       alt={alt}
       clas={classNames(styles.wrapper, clas)}
       ref={ref}

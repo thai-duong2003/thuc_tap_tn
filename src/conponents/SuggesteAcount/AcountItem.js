@@ -8,6 +8,7 @@ import Tippy from "@tippyjs/react/headless";
 import { Wrapper } from "../popper";
 import AccountPreview from "./AcountPrevew/AcountPreview";
 import { Fragment } from "react";
+import { IPHTTP } from "~/utils/httprequest";
 
 const cx = classNames.bind(styles);
 function Acountitem({ data }) {
@@ -26,7 +27,7 @@ function Acountitem({ data }) {
         )}
       >
         <div className={cx("acount-item")}>
-          <Image className={cx("avatar")} src={data.avatar} />
+          <Image className={cx("avatar")} src={IPHTTP + data.avatar} />
           <div className={cx("item-info")}>
             <p className={cx("nickname")}>
               <strong>{data.nickname}</strong>
@@ -34,9 +35,7 @@ function Acountitem({ data }) {
                 <FontAwesomeIcon className={cx("check")} icon={faCheckCircle} />
               )}
             </p>
-            <p
-              className={cx("name")}
-            >{`${data.first_name} ${data.last_name}`}</p>
+            <p className={cx("name")}>{data.name}</p>
           </div>
         </div>
       </Tippy>

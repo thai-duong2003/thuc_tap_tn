@@ -13,6 +13,7 @@ function VideoTag({
   onlodedplay = false,
   muted = false,
   playbtn = true,
+  onclicplaypause = false,
   children,
   videotagref,
 }) {
@@ -35,6 +36,14 @@ function VideoTag({
         .catch((err) => {});
     }
   };
+  const handleclick = () => {
+    if (isplay) {
+      pause();
+    } else {
+      play();
+    }
+    setplay(!isplay);
+  };
   const noactive = () => {};
   const clases = cx("wrapper", { [className]: className });
   return (
@@ -43,14 +52,7 @@ function VideoTag({
       className={clases}
       onMouseOver={mouseOverAutoPlay ? play : noactive}
       onMouseOut={mouseOutAutoPause ? pause : noactive}
-      onClick={() => {
-        if (isplay) {
-          pause();
-        } else {
-          play();
-        }
-        setplay(!isplay);
-      }}
+      onClick={onclicplaypause ? handleclick : noactive}
     >
       <video
         muted={muted === true ? false : true}

@@ -22,6 +22,7 @@ import Search from "~/layouts/Conponent/Search/Search";
 import { getanvideo } from "~/Services/getanvideo";
 import { IPHTTP } from "~/utils/httprequest";
 import { Getcomment } from "~/Services/Commentlist";
+import { Link } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
@@ -33,7 +34,8 @@ function VideoDetail() {
   const re = useRef();
   const [tag, settag] = useState(undefined);
   const [index, setindex] = useState(0);
-  const [data, setdata] = useState("");
+  const [datavideo, setdatavideo] = useState("");
+  const [videocreattor, setvideocreattor] = useState("");
   const [commentlist, setcommentlist] = useState("");
 
   const vi = () => {
@@ -46,23 +48,23 @@ function VideoDetail() {
   useEffect(() => {
     const fetchApi = async () => {
       const resuilt = await getanvideo(pathname);
-      setdata(resuilt);
+      setdatavideo(resuilt[0][0]);
+      setvideocreattor(resuilt[1]);
     };
 
     fetchApi();
   }, [pathname]);
   // call Comment api
-  // console.log(data.id);
 
   useEffect(() => {
-    if (data.id) {
+    if (datavideo.id) {
       const comnentapi = async () => {
-        const resuilt = await Getcomment(data.id);
+        const resuilt = await Getcomment(datavideo.id);
         setcommentlist(resuilt);
       };
       comnentapi();
     }
-  }, [data.id]);
+  }, [datavideo.id]);
 
   const backbroser = () => {
     window.history.back();
@@ -79,7 +81,7 @@ function VideoDetail() {
         <VideoTag
           // muted
           className={"detailvideo"}
-          src={IPHTTP + data.file_url}
+          src={IPHTTP + datavideo.file_url}
           onlodedplay
         ></VideoTag>
         {/*  */}
@@ -119,11 +121,13 @@ function VideoDetail() {
         </div>
       </div>
       <div className={cx("contentpast")}>
-        {data.user && <HomeHeader className={"videodetail"} data={data} />}
+        {datavideo.user && (
+          <HomeHeader className={"videodetail"} data={datavideo} />
+        )}
         <div className={cx("btnactive")}>
           <Videobtnactive
             deletelastitem
-            data={data}
+            data={datavideo}
             className={"videodetailBtnactive"}
           />
           <div className={cx("shareApp")}>
@@ -131,7 +135,7 @@ function VideoDetail() {
           </div>
         </div>
         <div className={cx("linkVideo")}>
-          <p>{IPHTTP + data.file_url}</p>
+          <p>{IPHTTP + datavideo.file_url}</p>
           <button>Coppy link</button>
         </div>
         <div className={cx("nameblock")}>
@@ -156,10 +160,30 @@ function VideoDetail() {
             className={cx("line")}
           ></p>
         </div>
-        <div className={cx("commentlock")}>
-          <Comments data={commentlist} />
-          <WriteComment />
-        </div>
+        {commentLayout ? (
+          <div className={cx("commentlock")}>
+            <Comments data={commentlist} />
+            <WriteComment />
+          </div>
+        ) : (
+          <div className={cx("createtorlock")}>
+            {videocreattor.length > 0 &&
+              videocreattor.map((item, index) => {
+                return (
+                  <Link
+                    key={index}
+                    to={`/videos/${item.id}`}
+                    className={cx("creatitem")}
+                    onClick={() => {
+                      setdatavideo(item);
+                    }}
+                  >
+                    <VideoTag src={IPHTTP + item.file_url} />
+                  </Link>
+                );
+              })}
+          </div>
+        )}
       </div>
       <Pretop className={"detailvideo"} />
     </div>

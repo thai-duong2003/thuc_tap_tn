@@ -7,6 +7,7 @@ import Explore from "~/page/Exploer/Exploer";
 import Profile from "~/page/Profile/Profile";
 import VideoDetail from "~/page/VideoDetail/VideoDetail";
 import NoPage from "~/page/noPage/Nopage";
+import Upload from "~/page/Upload/Upload";
 
 //public
 
@@ -18,6 +19,7 @@ const publicroutes = [
   { path: config.routes.profile, component: Profile },
   { path: config.routes.khampha, component: Explore },
   { path: config.routes.videodetail, component: VideoDetail, layout: null },
+  { path: config.routes.upload, component: Upload },
 ];
 
 // private

@@ -7,5 +7,6 @@ const routes = {
   khampha: "/explore",
   videodetail: "/videos/:id",
   login: "/login",
+  upload: "/upload",
 };
 export default routes;

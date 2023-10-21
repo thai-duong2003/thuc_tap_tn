@@ -19,21 +19,23 @@ import { useEffect, useState } from "react";
 import * as userServices from "~/Services/SuggestServices";
 const cx = classNames.bind(styles);
 function Sidebar() {
-  const per_page = 5;
-
   const [suggesteUsers, setsuggesteUsers] = useState([]);
-
+  const [page, setpage] = useState(1);
   useEffect(() => {
     const fetchApi = async () => {
       const resuilt = await userServices.Suggest({
-        page: 1,
-        perpage: per_page,
+        page: page,
       });
       setsuggesteUsers(resuilt);
     };
     // fetchApi();
-  }, []);
-
+  }, [page]);
+  const handleseemore = () => {
+    setpage(page + 1);
+  };
+  const handleselles = () => {
+    setpage(page - 1);
+  };
   return (
     <div className={cx("wrapper")}>
       <MenuSidebar>
@@ -62,7 +64,12 @@ function Sidebar() {
           activeicon={<LiveActiveicon />}
         />
       </MenuSidebar>
-      <SuggesteAcount title="Suggested accounts" data={suggesteUsers} />
+      <SuggesteAcount
+        seeall={handleseemore}
+        seeless={handleselles}
+        title="Suggested accounts"
+        data={suggesteUsers}
+      />
     </div>
   );
 }
