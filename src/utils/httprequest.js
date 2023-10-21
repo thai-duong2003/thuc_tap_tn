@@ -1,5 +1,5 @@
 import axios from "axios";
-export var IPHTTP = "http://192.168.102.230/"; //localhost
+export var IPHTTP = "http://localhost/"; //localhost
 const httprequest = axios.create({
   baseURL: `${IPHTTP}TIKTOK_API/public/api/`,
 });
